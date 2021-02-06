@@ -16,7 +16,7 @@ import { AppMaterialModule } from './material.module';
   imports: [
     FormsModule,
     CommonModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserModule,
     FlexLayoutModule,
     HttpClientModule,

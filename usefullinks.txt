@@ -1,0 +1,61 @@
+Good site with many unicodes
+https://www.toptal.com/designers/htmlarrows/symbols/
+
+Nice ScrollToTop Service
+https://dev.to/teroauralinna/scroll-to-the-top-on-angular-route-change-1gn5 => Better approach
+RouterModule.forRoot(routes, {
+      relativeLinkResolution: 'corrected',
+      scrollPositionRestoration: 'top',
+    }),
+
+Fighting with 404 on page reload
+WORKS!!! I deleted everything related to firebase and reinitialized new firebase hosting procedure. IMPORTANT!!!
+Answer YES on question "Configure as a single-page app (rewrite all urls to /index.html)?"
+https://bejda.medium.com/fixing-the-angular-404-on-refresh-issue-in-firebase-f462124afe40
+GOOD answer is here
+https://www.iditect.com/how-to/52347687.html
+
+HOW to MODIFY CSS for specific components
+https://jelmarose.com/post/angular-ng-deep/
+
+
+device layout
+https://www.quirksmode.org/blog/archives/2010/04/the_orientation.html
+
+Star Rating
+https://www.positronx.io/angular-star-rating-example-tutorial/
+
+Mat Tool Tip Example
+https://www.xspdf.com/resolution/57150283.html
+https://www.freakyjolly.com/angular-ng-bootstrap-tooltip-tutorial/
+
+ANGULA notifications
+https://artemsky.github.io/ng-snotify/
+
+30 BEST ANGULAR FRAMEWORKS SOLuTIONS
+https://www.akveo.com/blog/the-best-30-angular-components-2020-to-build-cool-web-solutions
+
+Modal Dialog
+https://www.ahmedbouchefra.com/angular-material-modal/
+
+
+
+Angular 10 Tutorial & Example — Upload Files with FormData, HttpClient, RxJS, and Material ProgressBar
+https://www.ahmedbouchefra.com/angular-tutorial-example-upload-files-with-formdata-httpclient-rxjs-and-material-progressbar/
+
+Силуэты качков
+https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F2%2FBodybuilding-PNG-Free-Image.png&imgrefurl=http%3A%2F%2Fwww.pngall.com%2Fbodybuilding-png%2Fdownload%2F27215&tbnid=gLYxNgZtMqGETM&vet=10CAMQxiAoAGoXChMI0MKK_OKx7gIVAAAAAB0AAAAAEAI..i&docid=gZcC8YnOAxIIuM&w=512&h=512&itg=1&q=biceps%20icon%20svg&client=opera&ved=0CAMQxiAoAGoXChMI0MKK_OKx7gIVAAAAAB0AAAAAEAI
+
+NICE BUTTON ANIMATION EFFECTS
+https://webdeasy.de/en/top-css-buttons-en/
+
+File C:\Users\name\AppData\Roaming\npm\ng.ps1 cannot be loaded because running scripts is disabled on this system angular error
+I just try this cmd in terminal and my problem has been solved
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser
+
+!!! note : don't change CurrentUser to your username
+
+n
+
+

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "titan-admin-panel"
+  },
+  "targets": {
+    "titan-admin-panel": {
+      "hosting": {
+        "titan-admin-panel": [
+          "titan-admin-panel"
+        ]
+      }
+    }
   }
 }
