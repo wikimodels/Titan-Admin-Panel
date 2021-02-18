@@ -18,7 +18,9 @@ import { AppMaterialModule } from './material.module';
     CommonModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserModule,
-    FlexLayoutModule,
+    FlexLayoutModule.withConfig({
+      ssrObserveBreakpoints: ['xs', 'lt-md', 'lt-lg', 'gt-md'],
+    }),
     HttpClientModule,
     AppRoutingModule,
     AppMaterialModule,

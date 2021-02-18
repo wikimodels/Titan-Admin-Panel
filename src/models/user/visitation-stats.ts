@@ -5,7 +5,7 @@ export interface VisitationStats {
   enter_date?: number;
   leave_date?: number;
   page_name?: string;
-  stay_duraion?: number;
+  stay_duration?: number;
 }
 
 export enum VisitationPageType {

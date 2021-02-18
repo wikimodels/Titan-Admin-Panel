@@ -37,9 +37,11 @@ const pageNames = [
   'Вопрос №18',
   'Вопрос №19',
   'Респонденты',
+  'Главная',
 ];
-const startDate = new Date(2021, 1, 30);
-const endDate = new Date();
+//const pageNames = ['Главная'];
+const startDate = new Date('2021-02-01');
+const endDate = new Date('2021-02-14');
 
 @Injectable({
   providedIn: 'root',
@@ -66,19 +68,17 @@ export class TestDataService {
         }),
         map((usersInfo: UserInfo[]) => {
           const visitation_stats: VisitationStats[] = [];
-          // user_info?: UserInfo;
-          // enter_date?: number;
-          // leave_date?: number;
-          // page_name?: string;
-          // stay_duraion?: number;
 
-          usersInfo.forEach((userInfo) => {
-            let visitationStats: VisitationStats = {};
-            visitationStats.user_info = userInfo;
-            visitationStats.page_name = this.supplyWithPageName();
-            visitationStats = this.supplyWithDates(visitationStats);
-            visitation_stats.push(visitationStats);
-          });
+          for (let i = 0; i < 6; i++) {
+            usersInfo.forEach((userInfo) => {
+              let visitationStats: VisitationStats = {};
+              visitationStats.user_info = userInfo;
+              visitationStats.page_name = this.supplyWithPageName();
+              visitationStats = this.supplyWithDates(visitationStats);
+              visitation_stats.push(visitationStats);
+            });
+          }
+
           return visitation_stats;
         }),
         switchMap((value) =>
@@ -103,19 +103,19 @@ export class TestDataService {
   }
 
   private supplyWithDates(visitationStats: VisitationStats) {
-    visitationStats.enter_date = this.getRandomDate(startDate, endDate);
-    visitationStats.stay_duraion = this.getRandomDuraion();
+    visitationStats.enter_date = this.getRandomDate(endDate, startDate);
+    visitationStats.stay_duration = this.getRandomDuraion();
     visitationStats.leave_date =
-      visitationStats.enter_date + visitationStats.stay_duraion;
+      visitationStats.enter_date + visitationStats.stay_duration;
     return visitationStats;
   }
 
-  private getRandomDate(start, end) {
-    return +(
-      new Date(
-        start.getTime() + Math.random() * (end.getTime() - start.getTime())
-      ).getTime() / 1000
-    ).toFixed(0);
+  private getRandomDate(end, start) {
+    return +new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    )
+      .getTime()
+      .toFixed(0);
   }
   private getRandomDuraion() {
     const randomNumber = this.getRandomInt(2, 10);

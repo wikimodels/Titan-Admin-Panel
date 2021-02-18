@@ -1,9 +1,24 @@
-function randomDate(start, end) {
-  return parseInt(
-    new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    ).getTime() / 1000
-  ).toFixed(0);
-}
-
-console.log(randomDate(new Date(2012, 0, 1), new Date()));
+db.visitation_stats.aggregate([
+  { $match: { page_name: "Главная" } },
+  {
+    $project: {
+      _id: 0,
+      ip: "$user_info.ip",
+      page_name: "$page_name",
+      date: { $toDate: "$enter_date" },
+    },
+  },
+  {
+    $group: {
+      _id: { ip: "$ip", date: { $hour: { $toDate: "$date" } } },
+      count: { $sum: 1 },
+    },
+  },
+  // {
+  //   $project: {
+  //     "Пользователь": "$ip",
+  //     "Страница": "$page_name",
+  //     "Дата":"$date"
+  //   }
+  // }
+]);

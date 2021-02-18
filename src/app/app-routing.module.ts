@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-  CHARTS_QUESTION,
-  MENU,
-  RESPONDENTS,
-  STAR_RATING,
-} from 'consts/routes.consts';
+import { CHARTS_QUESTION, MENU, RESPONDENTS } from 'consts/routes.consts';
 
 const routes: Routes = [
   // {
@@ -22,9 +17,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    scrollPositionRestoration: 'top',
-    initialNavigation: 'enabled'
-}),
+      scrollPositionRestoration: 'top',
+      initialNavigation: 'enabled',
+    }),
   ],
   exports: [RouterModule],
 })
