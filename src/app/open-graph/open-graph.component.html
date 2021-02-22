@@ -1,0 +1,98 @@
+<form [formGroup]="form" *ngIf="form">
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Open Graph</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayoutAlign="start start">
+        <!--TITLE-->
+        <mat-form-field class="full-width">
+          <mat-label>Title</mat-label>
+          <textarea
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="13"
+            type="text"
+            matInput
+            formControlName="title"
+          ></textarea>
+          <mat-error *ngIf="form.get('title').errors?.required"
+            >Title is required
+          </mat-error>
+        </mat-form-field>
+
+        <!--TYPE-->
+        <mat-form-field class="full-width">
+          <mat-label>Type</mat-label>
+          <input type="text" matInput formControlName="type" />
+          <mat-error *ngIf="form.get('type').errors?.required"
+            >Type is required
+          </mat-error>
+        </mat-form-field>
+
+        <!--DESCRIPTION-->
+        <mat-form-field class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="13"
+            type="text"
+            matInput
+            formControlName="description"
+          ></textarea>
+          <mat-error *ngIf="form.get('description').errors?.required"
+            >Description is required
+          </mat-error>
+        </mat-form-field>
+
+        <!--LOCALE-->
+        <mat-form-field class="full-width">
+          <mat-label>Locale</mat-label>
+          <input type="text" matInput formControlName="locale" />
+          <mat-error *ngIf="form.get('locale').errors?.required"
+            >Locale is required
+          </mat-error>
+        </mat-form-field>
+
+        <!--SITE URL-->
+        <mat-form-field class="full-width">
+          <mat-label>Site URL</mat-label>
+          <textarea
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="13"
+            type="text"
+            matInput
+            formControlName="site_url"
+          ></textarea>
+          <mat-error *ngIf="form.get('site_url').errors?.required"
+            >Site URL is required
+          </mat-error>
+        </mat-form-field>
+
+        <!--IMAGE-->
+        <mat-form-field class="full-width">
+          <mat-label>Image</mat-label>
+          <textarea
+            cdkTextareaAutosize
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="13"
+            type="text"
+            matInput
+            formControlName="image"
+          ></textarea>
+          <mat-error *ngIf="form.get('image').errors?.required"
+            >Image URL is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayoutAlign="end start" style="width: 100%">
+        <button mat-button (click)="onSubmit()">Save</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

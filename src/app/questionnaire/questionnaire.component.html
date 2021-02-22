@@ -1,0 +1,25 @@
+<!-- LIST -->
+<div *ngIf="questionnaire$ | async as questionnaire" class="list-container">
+  <div class="header">Questionnaire</div>
+  <mat-list>
+    <mat-list-item matRipple (click)="editRespondents()" class="menu-item">
+      <h3 matLine>
+        {{ questionnaire.respondents.respondents_header }}
+      </h3>
+      <p matLine>
+        <span>{{ questionnaire.respondents.respondents_subheader }}</span>
+      </p>
+    </mat-list-item>
+    <mat-list-item
+      class="menu-item"
+      *ngFor="let question of questionnaire.questions"
+      matRipple
+      (click)="editQuestion(question)"
+    >
+      <h3 matLine>Вопрос &#8470;{{ question.question_id }}</h3>
+      <p matLine>
+        <span> {{ question.question_text }} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</div>

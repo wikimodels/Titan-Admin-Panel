@@ -11,11 +11,42 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './material.module';
 
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { LayoutComponent } from './layout/layout.component';
+import { ButtonDownComponent } from './button-down/button-down.component';
+import { MongodbChartComponent } from './mongodb-chart/mongodb-chart.component';
+import { MongoPipe } from './pipes/mongo.pipe';
+import { SiteVisitationsComponent } from './site-visitations/site-visitations.component';
+import { PagesVisitationsComponent } from './pages-visitations/pages-visitations.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { BasicSnackbarModule } from './basic-snackbar/basic-snackbar.module';
+import { RespondentsComponent } from './respondents/respondents.component';
+import { OpenGraphComponent } from './open-graph/open-graph.component';
+import { ChartsComponent } from './charts/charts.component';
+import { QuestionComponent } from './question/question.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    MongoPipe,
+    AppComponent,
+    LayoutComponent,
+    HeaderComponent,
+    ButtonDownComponent,
+    SidenavListComponent,
+    MongodbChartComponent,
+    SiteVisitationsComponent,
+    PagesVisitationsComponent,
+    QuestionnaireComponent,
+    RespondentsComponent,
+    OpenGraphComponent,
+    ChartsComponent,
+    QuestionComponent,
+  ],
   imports: [
     FormsModule,
     CommonModule,
+    BasicSnackbarModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserModule,
     FlexLayoutModule.withConfig({

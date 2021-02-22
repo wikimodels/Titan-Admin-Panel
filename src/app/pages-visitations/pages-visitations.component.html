@@ -1,0 +1,22 @@
+<div class="screen" #charts>
+  <div class="header">Посещаемость Страниц</div>
+  <div
+    fxLayout.lt-lg="column"
+    fxLayoutAlign.lt-lg="center center"
+    fxLayoutGap.lt-lg="25px"
+    fxLayout.gt-md="row wrap"
+    fxLayoutAlign.gt-md="space-between"
+    #chars
+  >
+    <app-mongodb-chart
+      *ngFor="let chart of myCharts"
+      [scr]="chart.id"
+      [chartClass]="chart.ngClass"
+    >
+    </app-mongodb-chart>
+  </div>
+
+  <ng-container *ngIf="deviceDetectorService.isMobile()"
+    ><app-button-down [elementHeight]="elementHeight"></app-button-down
+  ></ng-container>
+</div>

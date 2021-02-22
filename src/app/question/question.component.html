@@ -1,0 +1,38 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  style="width: 100%"
+  fxLayoutGap="30px"
+>
+  <mat-accordion>
+    <form *ngIf="form" [formGroup]="form">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>Question Text</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <!-- QUESTION TEXT -->
+          <mat-form-field class="full-width">
+            <mat-label>Header</mat-label>
+            <input type="text" matInput formControlName="question_text" />
+            <mat-error *ngIf="form.hasError('required')">
+              Question Text is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="end start" style="width: 100%">
+          <button mat-button (click)="onSubmit()">Save</button>
+        </div>
+      </mat-expansion-panel>
+    </form>
+  </mat-accordion>
+
+  <ng-container *ngIf="question">
+    <app-open-graph [pageName]="question.page_name"></app-open-graph>
+    <app-charts [pageName]="question.page_name"></app-charts>
+  </ng-container>
+</div>

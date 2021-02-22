@@ -27,7 +27,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
 const modules = [
   MatSortModule,
   MatMenuModule,
@@ -49,6 +49,7 @@ const modules = [
   MatToolbarModule,
   MatCheckboxModule,
   MatSnackBarModule,
+  MatSidenavModule,
   MatGridListModule,
   MatExpansionModule,
   MatPaginatorModule,

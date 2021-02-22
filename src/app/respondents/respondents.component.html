@@ -1,0 +1,48 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  style="width: 100%"
+  fxLayoutGap="30px"
+>
+  <mat-accordion>
+    <form *ngIf="form" [formGroup]="form">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Headers</mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <!-- HEADER -->
+          <mat-form-field class="full-width">
+            <mat-label>Header</mat-label>
+            <input type="text" matInput formControlName="respondents_header" />
+            <mat-error *ngIf="form.hasError('required')">
+              Header is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <!-- SUBHEADER -->
+          <mat-form-field class="full-width">
+            <mat-label>Subheader</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="respondents_subheader"
+            />
+            <mat-error *ngIf="form.hasError('required')">
+              Subheader is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div fxLayoutAlign="end start" style="width: 100%">
+          <button mat-button (click)="onSubmit()">Save</button>
+        </div>
+      </mat-expansion-panel>
+    </form>
+  </mat-accordion>
+  <app-open-graph [pageName]="'respondents'"></app-open-graph>
+  <app-charts [pageName]="'respondents'"></app-charts>
+</div>

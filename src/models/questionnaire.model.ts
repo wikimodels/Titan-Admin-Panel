@@ -15,7 +15,6 @@ export interface Questionnaire {
   modification_date?: string;
   first_question_url?: string;
   creation_date_string?: string;
-  openGraphs?: OpenGraph[];
 }
 
 export interface Question {

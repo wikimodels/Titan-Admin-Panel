@@ -1,4 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./app/basic-snackbar/basic-snackbar.component.css");
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-drawer-content {
+  height: 100vh !important;
+}
+.mat-drawer-container {
+  background-color: #ffffff !important;
+  color: rgba(248, 228, 228, 0.87) !important;
+}
+.full-width {
+  width: 300px;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@media only screen and (min-device-width: 320px) and (max-device-width: 959px) {
+  /* Styles */
+  .list-container {
+    padding-bottom: 30px;
+  }
+  .screen {
+    padding-bottom: 30px;
+  }
+  .header-container {
+    width: 100vw;
+  }
+}
+
+@media only screen and (min-device-width: 959px) and (max-device-width: 1279px) {
+  .list-container {
+    padding-bottom: 30px;
+  }
+  .screen {
+    padding-bottom: 30px;
+  }
+  .header-container {
+    width: 100vw;
+  }
+}
+
+@media only screen and (min-device-width: 1280px) and (max-device-width: 5000px) {
+  /* Styles */
+  .screen {
+    width: 90vw;
+    margin: 0 auto;
+    padding-bottom: 70px;
+  }
+  .header-container {
+    width: 90vw;
+  }
+}
