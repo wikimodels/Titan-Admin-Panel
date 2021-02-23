@@ -1,10 +1,10 @@
 .info-snackbar {
-  color: whitesmoke;
-  background-color: #1f865b;
+  color: white;
+  background-color: #57d4a0;
 }
 
 .warning-snackbar {
-  color: whitesmoke;
+  color: white;
   background-color: #e6385e;
 }
 .mat-icon-button {
