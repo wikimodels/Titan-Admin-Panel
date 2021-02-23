@@ -49,10 +49,11 @@ export class AnswersComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    const answers = this.form.getRawValue().answers;
     if (this.form.status === 'VALID') {
       this.questionnaire = this.answersService.updateAnswers(
         this.pageName,
-        this.form.value.answers,
+        answers,
         this.questionnaire
       );
 
@@ -64,7 +65,7 @@ export class AnswersComponent implements OnInit, OnDestroy {
   addAnswer(index: number) {
     this.answers().push(
       new FormGroup({
-        answer_boolean_reply: new FormControl({ value: index, disabled: true }),
+        answer_boolean_reply: new FormControl({ value: false, disabled: true }),
         answer_chart_text: new FormControl('', Validators.required),
         answer_text: new FormControl('', Validators.required),
         answer_id: new FormControl({ value: index, disabled: true }),

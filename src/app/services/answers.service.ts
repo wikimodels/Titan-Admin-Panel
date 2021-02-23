@@ -43,7 +43,10 @@ export class AnswersService {
         value: answer.answer_boolean_reply,
         disabled: true,
       }),
-      answer_id: new FormControl({ value: answer.answer_id, disabled: true }),
+      answer_id: new FormControl({
+        value: answer.answer_id,
+        disabled: true,
+      }),
       answer_chart_text: new FormControl(
         answer.answer_chart_text,
         Validators.required

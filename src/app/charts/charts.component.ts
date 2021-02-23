@@ -41,7 +41,6 @@ export class ChartsComponent implements OnInit {
           this.questionnaire
         );
         this.form = this.chartsService.createFormGroup(this.myCharts);
-        console.log('Form', this.form);
       }
     );
   }

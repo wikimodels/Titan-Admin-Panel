@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, shareReplay } from 'rxjs/operators';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 
 import { Question, Questionnaire } from 'src/models/questionnaire.model';
 
@@ -44,6 +44,9 @@ export class QuestionnaireService {
     return this.http
       .get<Questionnaire>(GET_QUESTIONNAIRE_BY_QID(quesionnaireId))
       .pipe(
+        tap((q) => {
+          console.log(q);
+        }),
         this.delayedRetriesService.retryWithoutBackoff(5),
         catchError((error) => this.slackService.errorHandling(error)),
         shareReplay(1)
