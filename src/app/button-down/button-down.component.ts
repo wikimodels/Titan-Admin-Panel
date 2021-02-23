@@ -36,7 +36,8 @@ export class ButtonDownComponent implements OnInit {
     this.buttonClass = '';
     this.elementHeight = this.elementHeight + 4000;
     if (isPlatformBrowser(this.platformId)) {
-      this.windowRef.scrollTo({ top: this.elementHeight, behavior: 'smooth' });
+      window.scrollTo({ top: this.elementHeight, behavior: 'smooth' });
+      // this.windowRef.scrollTo({ top: this.elementHeight, behavior: 'smooth' });
     }
   }
 }

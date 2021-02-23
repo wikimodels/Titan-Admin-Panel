@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-subtitle>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+        <div>#{{ index + 1 }}</div>
+        <div>
+          <img [src]="textAnswerQuestion.flag_url" alt="flag" />
+        </div>
+        <div>
+          {{ textAnswerQuestion.country }}/ {{ textAnswerQuestion.city }}
+        </div>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{ textAnswerQuestion.question_text_answer }}
+  </mat-card-content>
+  <mat-card-actions style="text-align: right; font-weight: 300">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        <i> {{ textAnswerQuestion.creation_date_string }}</i>
+      </div>
+      <div>
+        <mat-icon
+          class="delete"
+          (click)="deleteTextAnswer(textAnswerQuestion, index)"
+          >delete</mat-icon
+        >
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

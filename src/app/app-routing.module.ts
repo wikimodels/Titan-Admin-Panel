@@ -6,13 +6,17 @@ import {
   QUESTION,
   RESPONDENTS,
   QUESTIONNAIRE,
+  TEXT_QUESTION,
+  RATING_QUESTION,
 } from 'consts/routes.consts';
 import { QuestionType } from 'src/models/questionnaire.model';
 import { PagesVisitationsComponent } from './pages-visitations/pages-visitations.component';
 import { QuestionComponent } from './question/question.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { RatingQuestionComponent } from './rating-question/rating-question.component';
 import { RespondentsComponent } from './respondents/respondents.component';
 import { SiteVisitationsComponent } from './site-visitations/site-visitations.component';
+import { TextAnswerComponent } from './text-answer/text-answer.component';
 
 const routes: Routes = [
   {
@@ -39,6 +43,14 @@ const routes: Routes = [
   {
     path: QUESTION + '/:question_id',
     component: QuestionComponent,
+  },
+  {
+    path: TEXT_QUESTION + '/:question_id',
+    component: TextAnswerComponent,
+  },
+  {
+    path: RATING_QUESTION + '/:question_id',
+    component: RatingQuestionComponent,
   },
 ];
 

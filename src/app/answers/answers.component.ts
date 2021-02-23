@@ -76,9 +76,9 @@ export class AnswersComponent implements OnInit, OnDestroy {
     );
   }
 
-  deleteAnswer(index: number) {
+  deleteAnswer(index: any) {
     const data: ModalData = {
-      item: 'Answer №' + (index + 1),
+      item: 'Answer №' + (Number.parseInt(index) + 1),
       index: index,
     };
     this.openDialog(data);

@@ -1,21 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import {
-  Question,
-  Questionnaire,
-  QuestionType,
-} from 'src/models/questionnaire.model';
+import { Questionnaire, Question } from 'src/models/questionnaire.model';
 import { QuestionnaireService } from '../services/questionnaire.service';
 import { QuestionsService } from '../services/questions.service';
 
 @Component({
-  selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.css'],
+  selector: 'app-rating-question',
+  templateUrl: './rating-question.component.html',
+  styleUrls: ['./rating-question.component.css'],
 })
-export class QuestionComponent implements OnInit, OnDestroy {
+export class RatingQuestionComponent implements OnInit, OnDestroy {
   questionnaire: Questionnaire;
   sub: Subscription;
   form: FormGroup;

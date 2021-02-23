@@ -1,0 +1,13 @@
+.viewport {
+  height: 500px;
+  overflow-y: auto;
+}
+
+:host ::ng-deep .mat-card-header-text {
+  margin: 0px 0px;
+}
+.delete {
+  font-size: 24px;
+  color: red;
+  cursor: pointer;
+}

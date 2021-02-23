@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { QUESTION, RESPONDENTS } from 'consts/routes.consts';
+import {
+  QUESTION,
+  RATING_QUESTION,
+  RESPONDENTS,
+  TEXT_QUESTION,
+} from 'consts/routes.consts';
 import { Observable } from 'rxjs';
 import {
   Question,
@@ -26,6 +31,12 @@ export class QuestionnaireComponent implements OnInit {
     this.questionnaire$ = this.questionnaireService.questionnaire$;
   }
   editQuestion(question: Question) {
+    if (question.question_type === QuestionType.TEXT) {
+      this.router.navigate([TEXT_QUESTION + '/' + question.question_id]);
+    }
+    if (question.question_type === QuestionType.RATING_ANSWER) {
+      this.router.navigate([RATING_QUESTION + '/' + question.question_id]);
+    }
     if (
       question.question_type != QuestionType.RATING_ANSWER &&
       question.question_type != QuestionType.TEXT

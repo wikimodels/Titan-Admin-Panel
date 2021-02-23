@@ -1,4 +1,5 @@
 export interface TextAnswerQuestion {
+  _id: string;
   flag_url: string;
   country: string;
   city: string;

@@ -27,6 +27,9 @@ import { ChartsComponent } from './charts/charts.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswersComponent } from './answers/answers.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { TextAnswerComponent } from './text-answer/text-answer.component';
+import { TextAnswerCardComponent } from './text-answer/text-answer-card/text-answer-card.component';
+import { RatingQuestionComponent } from './rating-question/rating-question.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +43,15 @@ import { DialogComponent } from './dialog/dialog.component';
     SiteVisitationsComponent,
     PagesVisitationsComponent,
     QuestionnaireComponent,
+    TextAnswerComponent,
+    TextAnswerCardComponent,
     RespondentsComponent,
     OpenGraphComponent,
-    ChartsComponent,
     QuestionComponent,
     AnswersComponent,
     DialogComponent,
+    ChartsComponent,
+    RatingQuestionComponent,
   ],
   imports: [
     FormsModule,

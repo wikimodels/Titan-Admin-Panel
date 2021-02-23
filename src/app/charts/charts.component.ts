@@ -73,9 +73,9 @@ export class ChartsComponent implements OnInit {
     );
   }
 
-  deleteChart(index: number) {
+  deleteChart(index: any) {
     const data: ModalData = {
-      item: 'Chart №' + (index + 1),
+      item: 'Chart №' + (Number.parseInt(index) + 1),
       index: index,
     };
     this.openDialog(data);
