@@ -26,6 +26,7 @@ import { OpenGraphComponent } from './open-graph/open-graph.component';
 import { ChartsComponent } from './charts/charts.component';
 import { QuestionComponent } from './question/question.component';
 import { AnswersComponent } from './answers/answers.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AnswersComponent } from './answers/answers.component';
     ChartsComponent,
     QuestionComponent,
     AnswersComponent,
+    DialogComponent,
   ],
   imports: [
     FormsModule,
@@ -63,5 +65,6 @@ import { AnswersComponent } from './answers/answers.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}

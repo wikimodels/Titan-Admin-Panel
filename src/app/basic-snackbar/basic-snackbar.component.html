@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" class="snackbar">
   <div style="font-size: 18px">{{ data }}</div>
   <div>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="dismiss()">
       <mat-icon>close</mat-icon>
     </button>
   </div>

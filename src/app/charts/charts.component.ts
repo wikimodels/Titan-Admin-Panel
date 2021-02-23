@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { validateBasis } from '@angular/flex-layout';
+import { ModalData } from 'src/models/modal-data.model';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import {
   Chart,
   OpenGraph,
   Questionnaire,
 } from 'src/models/questionnaire.model';
+import { DialogComponent } from '../dialog/dialog.component';
 import { ChartsService } from '../services/charts.service';
 import { OpenGraphService } from '../services/open-graph.service';
 import { QuestionnaireService } from '../services/questionnaire.service';
@@ -23,8 +25,9 @@ export class ChartsComponent implements OnInit {
   sub: Subscription;
   myCharts: Chart[];
   form: FormGroup;
-
+  color = 'blue';
   constructor(
+    public dialog: MatDialog,
     public questionnaireService: QuestionnaireService,
     private chartsService: ChartsService
   ) {}
@@ -70,7 +73,23 @@ export class ChartsComponent implements OnInit {
       })
     );
   }
+
   deleteChart(index: number) {
-    this.charts().removeAt(index);
+    const data: ModalData = {
+      item: 'Chart №' + (index + 1),
+      index: index,
+    };
+    this.openDialog(data);
+  }
+
+  private openDialog(data: ModalData): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((index) => {
+      this.charts().removeAt(index);
+    });
   }
 }

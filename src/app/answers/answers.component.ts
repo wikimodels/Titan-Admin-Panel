@@ -1,17 +1,12 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import {
-  Questionnaire,
-  Question,
-  Chart,
-  Answer,
-} from 'src/models/questionnaire.model';
+import { ModalData } from 'src/models/modal-data.model';
+import { Questionnaire, Answer } from 'src/models/questionnaire.model';
+import { DialogComponent } from '../dialog/dialog.component';
 import { AnswersService } from '../services/answers.service';
-import { ChartsService } from '../services/charts.service';
 import { QuestionnaireService } from '../services/questionnaire.service';
-import { QuestionsService } from '../services/questions.service';
 
 @Component({
   selector: 'app-answers',
@@ -28,7 +23,8 @@ export class AnswersComponent implements OnInit, OnDestroy {
 
   constructor(
     public questionnaireService: QuestionnaireService,
-    private answersService: AnswersService
+    private answersService: AnswersService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +40,6 @@ export class AnswersComponent implements OnInit, OnDestroy {
           console.log(a);
         });
         this.form = this.answersService.createFormGroup(this.myAnswers);
-        // console.log('Form', this.form);
       }
     );
   }
@@ -81,7 +76,22 @@ export class AnswersComponent implements OnInit, OnDestroy {
   }
 
   deleteAnswer(index: number) {
-    this.answers().removeAt(index);
+    const data: ModalData = {
+      item: 'Answer №' + (index + 1),
+      index: index,
+    };
+    this.openDialog(data);
+  }
+
+  private openDialog(data: ModalData): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: data,
+    });
+
+    dialogRef.afterClosed().subscribe((index) => {
+      this.answers().removeAt(index);
+    });
   }
 
   ngOnDestroy() {
