@@ -16,7 +16,7 @@
         <div fxLayout="column" fxLayoutAlign="start start">
           <!-- QUESTION TEXT -->
           <mat-form-field class="full-width">
-            <mat-label>Header</mat-label>
+            <mat-label>Question Text</mat-label>
             <input type="text" matInput formControlName="question_text" />
             <mat-error *ngIf="form.hasError('required')">
               Question Text is <strong>required</strong>
@@ -32,6 +32,7 @@
   </mat-accordion>
 
   <ng-container *ngIf="question">
+    <app-answers [pageName]="question.page_name"></app-answers>
     <app-open-graph [pageName]="question.page_name"></app-open-graph>
     <app-charts [pageName]="question.page_name"></app-charts>
   </ng-container>

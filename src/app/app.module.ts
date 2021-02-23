@@ -25,6 +25,7 @@ import { RespondentsComponent } from './respondents/respondents.component';
 import { OpenGraphComponent } from './open-graph/open-graph.component';
 import { ChartsComponent } from './charts/charts.component';
 import { QuestionComponent } from './question/question.component';
+import { AnswersComponent } from './answers/answers.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { QuestionComponent } from './question/question.component';
     OpenGraphComponent,
     ChartsComponent,
     QuestionComponent,
+    AnswersComponent,
   ],
   imports: [
     FormsModule,

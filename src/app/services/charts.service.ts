@@ -20,17 +20,12 @@ import { getPristionQuestionnaire } from 'consts/pristin-questionnaire';
 import { SlackService } from './shared/slack.service';
 import { DelayedRetriesService } from './shared/delayed-retries.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { QuestionnaireService } from './questionnaire.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChartsService {
-  constructor(
-    private http: HttpClient,
-    private slackService: SlackService,
-    private delayedRetriesService: DelayedRetriesService
-  ) {}
-
   createFormGroup(charts: Chart[]) {
     let array: FormGroup[] = [];
     charts.forEach((c) => {
@@ -51,57 +46,32 @@ export class ChartsService {
   }
 
   getCharts(pageName: string, quesionnaire: Questionnaire): Chart[] {
-    console.log(pageName);
-    console.log(quesionnaire);
     let charts: Chart[];
     if (quesionnaire.respondents.page_name === pageName) {
-      charts = quesionnaire.respondents.respondents_charts;
+      charts = [...quesionnaire.respondents.respondents_charts];
     }
     quesionnaire.questions.forEach((q) => {
       if (q.page_name === pageName) {
         charts = q.question_charts;
       }
     });
-    console.log('charts', charts);
     return charts;
   }
 
-  questionnaire$ = this.getQuestionnaire();
-
-  private getQuestionnaire(): Observable<Questionnaire> {
-    let quesionnaireId = QID();
-    return this.http
-      .get<Questionnaire>(GET_QUESTIONNAIRE_BY_QID(quesionnaireId))
-      .pipe(
-        this.delayedRetriesService.retryWithoutBackoff(5),
-        catchError((error) => this.slackService.errorHandling(error)),
-        shareReplay(1)
-      );
-  }
-
-  question$(questionId: number): Observable<Question> {
-    return this.questionnaire$.pipe(
-      map((questionnaire: Questionnaire) => {
-        const question = questionnaire.questions.find(
-          (q) => q.question_id === questionId
-        );
-        return question;
-      })
-    );
-  }
-
-  uploadQuestionnaire() {
-    const q = getPristionQuestionnaire();
-    this.http
-      .post(UPLOAD_TEST_QUESTIONNAIRE(), q)
-      .pipe(catchError((error) => this.slackService.errorHandling(error)))
-      .subscribe(console.log);
-  }
-  uploadTestQuestionnaire() {
-    const q = getPristionQuestionnaire();
-    this.http
-      .post(UPLOAD_TEST_QUESTIONNAIRE(), q)
-      .pipe(catchError((error) => this.slackService.errorHandling(error)))
-      .subscribe(console.log);
+  updateCharts(
+    pageName: string,
+    charts: Chart[],
+    questionnaire: Questionnaire
+  ): Questionnaire {
+    if (pageName === 'respondents') {
+      questionnaire.respondents.respondents_charts = [...charts];
+    } else {
+      questionnaire.questions.forEach((q) => {
+        if (q.page_name === pageName) {
+          q.question_charts = [...charts];
+        }
+      });
+    }
+    return questionnaire;
   }
 }

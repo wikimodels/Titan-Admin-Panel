@@ -31,12 +31,20 @@ export class QuestionComponent implements OnInit, OnDestroy {
           +this.route.snapshot.params['question_id'],
           this.questionnaire
         );
-        this.form = this.questionsService.createFormGroup(
-          this.question,
-          this.questionnaire
-        );
+        console.log('question', this.question);
+        this.form = this.questionsService.createFormGroup(this.question);
       }
     );
+  }
+  onSubmit() {
+    if (this.form.status === 'VALID') {
+      this.questionnaire = this.questionsService.updateQuestion(
+        this.form.value.question_text,
+        this.question,
+        this.questionnaire
+      );
+      this.questionnaireService.uploadQuestionnaire(this.questionnaire);
+    }
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

@@ -38,7 +38,7 @@ export class OpenGraphService {
     return formControls;
   }
 
-  updateTestQuestionnaire(
+  updateOpenGraph(
     pageName: string,
     openGraph: OpenGraph,
     questionnaire: Questionnaire
@@ -66,37 +66,5 @@ export class OpenGraphService {
     });
     console.log('openGraph', openGraph);
     return openGraph;
-  }
-
-  questionnaire$ = this.getQuestionnaire();
-
-  private getQuestionnaire(): Observable<Questionnaire> {
-    let quesionnaireId = QID();
-    return this.http
-      .get<Questionnaire>(GET_QUESTIONNAIRE_BY_QID(quesionnaireId))
-      .pipe(
-        this.delayedRetriesService.retryWithoutBackoff(5),
-        catchError((error) => this.slackService.errorHandling(error)),
-        shareReplay(1)
-      );
-  }
-
-  question$(questionId: number): Observable<Question> {
-    return this.questionnaire$.pipe(
-      map((questionnaire: Questionnaire) => {
-        const question = questionnaire.questions.find(
-          (q) => q.question_id === questionId
-        );
-        return question;
-      })
-    );
-  }
-
-  uploadTestQuestionnaire() {
-    const q = getPristionQuestionnaire();
-    this.http
-      .post(UPLOAD_TEST_QUESTIONNAIRE(), q)
-      .pipe(catchError((error) => this.slackService.errorHandling(error)))
-      .subscribe(console.log);
   }
 }

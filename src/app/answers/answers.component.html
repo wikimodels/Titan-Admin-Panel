@@ -1,0 +1,140 @@
+<form [formGroup]="form" *ngIf="form">
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Answers</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div formArrayName="answers">
+        <div *ngFor="let answer of answers().controls; index as i">
+          <div [formGroupName]="i" style="margin-bottom: 20px">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div>Answer №{{ i + 1 }}</div>
+              <div>
+                <mat-icon class="delete" (click)="deleteAnswer(i)"
+                  >delete</mat-icon
+                >
+              </div>
+            </div>
+
+            <div
+              fxLayout="column"
+              fxLayoutAlign="start center"
+              style="width: 100%"
+            >
+              <!-- ANSWER TEXT -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Text</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_text"
+                ></textarea>
+                <mat-error *ngIf="answer">Answer Text is required </mat-error>
+              </mat-form-field>
+
+              <!-- ANSWER CHART TEXT -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Chart Text</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_chart_text"
+                ></textarea>
+                <mat-error *ngIf="answer"
+                  >Answer Chart Text is required
+                </mat-error>
+              </mat-form-field>
+
+              <!-- ANSWER IMAGE URL -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Image URL</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_img_url"
+                ></textarea>
+              </mat-form-field>
+
+              <!-- ANSWER IMAGE ALT -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Image ALT</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_img_alt"
+                ></textarea>
+              </mat-form-field>
+
+              <!-- ANSWER CLICKED STYLE -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Clicked Style</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_clicked_style"
+                ></textarea>
+                <mat-error *ngIf="answer"
+                  >Answer Clicked Style is required
+                </mat-error>
+              </mat-form-field>
+
+              <!--  ANSWER BOOLEAN REPLY -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer Boolean Reply</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_boolean_reply"
+                ></textarea>
+                <mat-error *ngIf="answer"
+                  >Answer Boolean Reply is required
+                </mat-error>
+              </mat-form-field>
+
+              <!-- ANSWER ID -->
+              <mat-form-field class="full-width">
+                <mat-label>Answer ID</mat-label>
+                <textarea
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="13"
+                  type="text"
+                  matInput
+                  formControlName="answer_id"
+                ></textarea>
+                <mat-error *ngIf="answer">Answer ID is required </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayoutAlign="end start" style="width: 100%">
+        <button mat-button (click)="addAnswer(answers().length)">
+          Add Answer
+        </button>
+        <button mat-button (click)="onSubmit()">Save Answers</button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>

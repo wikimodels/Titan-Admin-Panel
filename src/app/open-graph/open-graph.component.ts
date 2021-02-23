@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { OpenGraph, Questionnaire } from 'src/models/questionnaire.model';
-import { BasicSnackbarService } from '../basic-snackbar/basic-snackbar.service';
 import { OpenGraphService } from '../services/open-graph.service';
 import { QuestionnaireService } from '../services/questionnaire.service';
 
@@ -41,7 +40,7 @@ export class OpenGraphComponent implements OnInit {
 
   onSubmit() {
     if (this.form.status === 'VALID') {
-      this.questionnaire = this.openGraphService.updateTestQuestionnaire(
+      this.questionnaire = this.openGraphService.updateOpenGraph(
         this.pageName,
         this.form.value,
         this.questionnaire

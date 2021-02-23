@@ -49,7 +49,14 @@ export class ChartsComponent implements OnInit {
 
   onSubmit() {
     if (this.form.status === 'VALID') {
-      this.questionnaire.respondents.respondents_charts = this.form.controls.charts.value;
+      this.questionnaire = this.chartsService.updateCharts(
+        this.pageName,
+        this.form.value.charts,
+        this.questionnaire
+      );
+      this.questionnaire.respondents.respondents_charts = [
+        ...this.form.controls.charts.value,
+      ];
       this.questionnaireService.uploadQuestionnaire(this.questionnaire);
     }
     console.log(this.form.status);
