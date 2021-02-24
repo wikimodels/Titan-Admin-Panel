@@ -1,6 +1,21 @@
 <mat-nav-list>
-  <!-- ПОСЕЩАЕМОСТЬ САЙТА -->
+  <!-- QUESTIONNAIRE -->
   <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="black"
+      width="24px"
+      height="24px"
+    >
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path
+        d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+      /></svg
+    ><span class="nav-caption">Questionnaire</span>
+  </a>
+  <!-- ПОСЕЩАЕМОСТЬ САЙТА -->
+  <a mat-list-item routerLink="/site-visitations" (click)="onSidenavClose()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       enable-background="new 0 0 24 24"
@@ -26,7 +41,7 @@
   </a>
 
   <!-- ПОСЕЩАЕМОСТЬ СТРАНИЦ -->
-  <a mat-list-item routerLink="/pages" (click)="onSidenavClose()">
+  <a mat-list-item routerLink="/pages-visitations" (click)="onSidenavClose()">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       enable-background="new 0 0 24 24"
@@ -45,21 +60,6 @@
     <span class="nav-caption">Посещаемость Страниц</span>
   </a>
 
-  <!-- QUESTIONNAIRE -->
-  <a mat-list-item routerLink="/questionnaire" (click)="onSidenavClose()">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="black"
-      width="24px"
-      height="24px"
-    >
-      <path d="M0 0h24v24H0V0z" fill="none" />
-      <path
-        d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
-      /></svg
-    ><span class="nav-caption">Questionnaire</span>
-  </a>
   <mat-list-item [matMenuTriggerFor]="menu">
     <mat-icon>unfold_more</mat-icon>
     <a matline>Example</a>

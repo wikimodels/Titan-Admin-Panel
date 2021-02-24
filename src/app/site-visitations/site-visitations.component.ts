@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart, ChartType } from 'src/models/questionnaire.model';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import * as defaults from '../../assets/utils/defaults.json';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-site-visitations',
@@ -11,9 +12,26 @@ import * as defaults from '../../assets/utils/defaults.json';
 export class SiteVisitationsComponent implements OnInit {
   myCharts: Chart[];
   elementHeight = defaults.chartsElementHeight;
-  constructor(public deviceDetectorService: DeviceDetectorService) {}
+  constructor(
+    public deviceDetectorService: DeviceDetectorService,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   ngOnInit(): void {
+    this.title.setTitle('Titan Admin Panel');
+    this.meta.addTags([
+      { name: 'og:title', content: 'Titan Admin Panel' },
+      {
+        name: 'og:description',
+        content: 'Site contains basic charts about Titan Survey',
+      },
+      {
+        name: 'og:image',
+        content: './assets/images/site-visitations.jpg',
+      },
+      { name: 'og:url', content: '' },
+    ]);
     this.myCharts = [
       {
         id: '3f3ba6d6-b483-46fc-acf9-15e79108bb15',

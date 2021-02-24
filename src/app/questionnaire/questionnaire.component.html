@@ -1,6 +1,11 @@
 <!-- LIST -->
 <div *ngIf="questionnaire$ | async as questionnaire" class="list-container">
-  <div class="header">Questionnaire</div>
+  <mat-grid-list cols="1" rowHeight="1200:630">
+    <mat-grid-tile
+      ><img src="assets/images/admin-panel.jpg" alt="powerful spine" />
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="header">Вопросы</div>
   <mat-list>
     <mat-list-item matRipple (click)="editRespondents()" class="menu-item">
       <h3 matLine>

@@ -30,6 +30,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { TextAnswerComponent } from './text-answer/text-answer.component';
 import { TextAnswerCardComponent } from './text-answer/text-answer-card/text-answer-card.component';
 import { RatingQuestionComponent } from './rating-question/rating-question.component';
+import { TextQuestionComponent } from './text-question/text-question.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { RatingQuestionComponent } from './rating-question/rating-question.compo
     DialogComponent,
     ChartsComponent,
     RatingQuestionComponent,
+    TextQuestionComponent,
   ],
   imports: [
     FormsModule,

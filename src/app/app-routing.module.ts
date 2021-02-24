@@ -5,9 +5,10 @@ import {
   PAGES,
   QUESTION,
   RESPONDENTS,
-  QUESTIONNAIRE,
+  SITE,
   TEXT_QUESTION,
   RATING_QUESTION,
+  TEXT_ANSWER,
 } from 'consts/routes.consts';
 import { QuestionType } from 'src/models/questionnaire.model';
 import { PagesVisitationsComponent } from './pages-visitations/pages-visitations.component';
@@ -17,6 +18,7 @@ import { RatingQuestionComponent } from './rating-question/rating-question.compo
 import { RespondentsComponent } from './respondents/respondents.component';
 import { SiteVisitationsComponent } from './site-visitations/site-visitations.component';
 import { TextAnswerComponent } from './text-answer/text-answer.component';
+import { TextQuestionComponent } from './text-question/text-question.component';
 
 const routes: Routes = [
   {
@@ -26,15 +28,16 @@ const routes: Routes = [
   },
   {
     path: HOME,
-    component: SiteVisitationsComponent,
+    component: QuestionnaireComponent,
   },
+
   {
     path: PAGES,
     component: PagesVisitationsComponent,
   },
   {
-    path: QUESTIONNAIRE,
-    component: QuestionnaireComponent,
+    path: SITE,
+    component: SiteVisitationsComponent,
   },
   {
     path: RESPONDENTS,
@@ -45,8 +48,12 @@ const routes: Routes = [
     component: QuestionComponent,
   },
   {
-    path: TEXT_QUESTION + '/:question_id',
+    path: TEXT_ANSWER + '/:question_id',
     component: TextAnswerComponent,
+  },
+  {
+    path: TEXT_QUESTION + '/:question_id',
+    component: TextQuestionComponent,
   },
   {
     path: RATING_QUESTION + '/:question_id',
