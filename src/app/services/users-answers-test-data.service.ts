@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  DELETE_ALL_USERS_ANSWERS,
   SUPPLY_IP_ADDRESSES_WITH_LOCATIONS,
   UPLOAD_BATCH_OF_ANSWERS,
 } from 'consts/urls.consts';
@@ -9,7 +10,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { UserInfo } from 'src/models/user/user-info.model';
 import { getTestIps } from 'consts/test-ip-data';
 import { Questionnaire, QuestionType } from 'src/models/questionnaire.model';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
 import * as moment from 'moment';
 import { getPristinQuestionnaire } from 'consts/pristin-questionnaire';
 import { BasicSnackbarService } from '../basic-snackbar/basic-snackbar.service';
@@ -134,9 +135,10 @@ export class UserAnswersTestDataService {
             );
             q.question_answers[cbmaRandomIndex].answer_boolean_reply = true;
 
-            chbmaPositiveAnswers = q.question_answers.filter(
-              (a) => a.answer_boolean_reply === true
-            ).length;
+            chbmaPositiveAnswers = 4;
+            // chbmaPositiveAnswers = q.question_answers.filter(
+            //   (a) => a.answer_boolean_reply === true
+            // ).length;
           }
           break;
 
@@ -149,9 +151,10 @@ export class UserAnswersTestDataService {
               q.question_answers.length - 1
             );
             q.question_answers[imaRandomIndex].answer_boolean_reply = true;
-            imaPositiveAnswers = q.question_answers.filter(
-              (a) => a.answer_boolean_reply === true
-            ).length;
+            imaPositiveAnswers = 5;
+            // imaPositiveAnswers = q.question_answers.filter(
+            //   (a) => a.answer_boolean_reply === true
+            // ).length;
           }
           break;
 
@@ -164,9 +167,10 @@ export class UserAnswersTestDataService {
               q.question_answers.length - 1
             );
             q.question_answers[simaRandomIndex].answer_boolean_reply = true;
-            positiveAnswers = q.question_answers.filter(
-              (a) => a.answer_boolean_reply === true
-            ).length;
+            positiveAnswers = 4;
+            // positiveAnswers = q.question_answers.filter(
+            //   (a) => a.answer_boolean_reply === true
+            // ).length;
           }
           if (q.question_answers[0].answer_boolean_reply === true) {
             for (let i = 1; i < q.question_answers.length; i++) {

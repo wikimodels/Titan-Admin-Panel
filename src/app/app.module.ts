@@ -33,6 +33,10 @@ import { RatingQuestionComponent } from './rating-question/rating-question.compo
 import { TextQuestionComponent } from './text-question/text-question.component';
 import { UtilsComponent } from './utils/utils.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -58,6 +62,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     TextQuestionComponent,
     UtilsComponent,
     NavBarComponent,
+    LoginComponent,
   ],
   imports: [
     FormsModule,
@@ -74,6 +79,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ReactiveFormsModule,
     InfiniteScrollModule,
     BrowserAnimationsModule,
+
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],

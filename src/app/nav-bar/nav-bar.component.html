@@ -13,23 +13,8 @@
 </div>
 <mat-menu #menu="matMenu">
   <mat-nav-list>
-    <!-- QUESTIONNAIRE -->
-    <a mat-list-item routerLink="/home">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="black"
-        width="24px"
-        height="24px"
-      >
-        <path d="M0 0h24v24H0V0z" fill="none" />
-        <path
-          d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
-        /></svg
-      ><span class="nav-caption">Questionnaire</span>
-    </a>
     <!-- ПОСЕЩАЕМОСТЬ САЙТА -->
-    <a mat-list-item routerLink="/site-visitations">
+    <a mat-list-item routerLink="/home">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         enable-background="new 0 0 24 24"
@@ -73,7 +58,21 @@
       </svg>
       <span class="nav-caption">Посещаемость Страниц</span>
     </a>
-
+    <!-- QUESTIONNAIRE -->
+    <a mat-list-item routerLink="/questionnaire">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="black"
+        width="24px"
+        height="24px"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M10 10.02h5V21h-5zM17 21h3c1.1 0 2-.9 2-2v-9h-5v11zm3-18H5c-1.1 0-2 .9-2 2v3h19V5c0-1.1-.9-2-2-2zM3 19c0 1.1.9 2 2 2h3V10H3v9z"
+        /></svg
+      ><span class="nav-caption">Questionnaire</span>
+    </a>
     <!-- UTILS -->
     <a mat-list-item routerLink="/utils">
       <svg
@@ -91,6 +90,22 @@
         </g>
       </svg>
       <span class="nav-caption">Utils</span>
+    </a>
+
+    <!-- LOGOUT -->
+    <a mat-list-item (click)="logout()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+        />
+      </svg>
+      <span class="nav-caption">Logout</span>
     </a>
   </mat-nav-list>
 </mat-menu>

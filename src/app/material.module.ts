@@ -32,6 +32,7 @@ const modules = [
   MatSortModule,
   MatMenuModule,
   MatIconModule,
+  MatIconModule,
   MatCardModule,
   MatListModule,
   MatTabsModule,
