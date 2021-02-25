@@ -28,7 +28,7 @@ export class SiteVisitationsComponent implements OnInit {
       },
       {
         name: 'og:image',
-        content: './assets/images/site-visitations.jpg',
+        content: './assets/images/site-visits.jpg',
       },
       {
         name: 'og:url',
