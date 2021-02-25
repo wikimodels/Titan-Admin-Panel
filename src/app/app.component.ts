@@ -22,18 +22,18 @@ export class AppComponent implements OnInit {
     );
   }
   ngOnInit() {
-    this.title.setTitle('Titan Admin Panel');
-    this.meta.addTags([
-      { name: 'og:title', content: 'Titan Admin Panel' },
-      {
-        name: 'og:description',
-        content: 'Site contains basic charts about Titan Survey',
-      },
-      {
-        name: 'og:image',
-        content: './assets/images/titan-survey-admin-panel.jpg',
-      },
-      { name: 'og:url', content: '' },
-    ]);
+    // this.title.setTitle('Titan Admin Panel');
+    // this.meta.addTags([
+    //   { name: 'og:title', content: 'Titan Admin Panel' },
+    //   {
+    //     name: 'og:description',
+    //     content: 'Site contains basic charts about Titan Survey',
+    //   },
+    //   {
+    //     name: 'og:image',
+    //     content: './assets/images/site.jpg',
+    //   },
+    //   { name: 'og:url', content: '' },
+    // ]);
   }
 }

@@ -28,9 +28,12 @@ export class PagesVisitationsComponent implements OnInit {
       },
       {
         name: 'og:image',
-        content: './assets/images/titan-survey-admin-panel.jpg',
+        content: './assets/images/page-visitations.jpg',
       },
-      { name: 'og:url', content: '' },
+      {
+        name: 'og:url',
+        content: 'https://titan-admin-panel.web.app/pages-visitations',
+      },
     ]);
     this.myCharts = [
       {

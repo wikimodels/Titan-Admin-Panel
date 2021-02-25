@@ -30,7 +30,10 @@ export class SiteVisitationsComponent implements OnInit {
         name: 'og:image',
         content: './assets/images/site-visitations.jpg',
       },
-      { name: 'og:url', content: '' },
+      {
+        name: 'og:url',
+        content: 'https://titan-admin-panel.web.app/home',
+      },
     ]);
     this.myCharts = [
       {
