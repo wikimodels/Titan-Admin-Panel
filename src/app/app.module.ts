@@ -32,6 +32,7 @@ import { TextAnswerCardComponent } from './text-answer/text-answer-card/text-ans
 import { RatingQuestionComponent } from './rating-question/rating-question.component';
 import { TextQuestionComponent } from './text-question/text-question.component';
 import { UtilsComponent } from './utils/utils.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { UtilsComponent } from './utils/utils.component';
     RatingQuestionComponent,
     TextQuestionComponent,
     UtilsComponent,
+    NavBarComponent,
   ],
   imports: [
     FormsModule,

@@ -84,7 +84,9 @@ export class TextAnswerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {}
+
   onScroll() {
+    console.log('scrolled');
     this.buttonClass = '';
     const textAnswerQuestionsCount = this.textAnswerQuestions.length;
     if (textAnswerQuestionsCount < this.collectionTotalCount) {

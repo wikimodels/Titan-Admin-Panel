@@ -1,4 +1,4 @@
-<app-layout>
+<!-- <app-layout>
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
       <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
@@ -10,4 +10,8 @@
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</app-layout> -->
+<app-layout>
+  <app-nav-bar></app-nav-bar>
+  <router-outlet></router-outlet>
 </app-layout>

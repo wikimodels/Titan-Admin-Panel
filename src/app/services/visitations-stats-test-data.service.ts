@@ -4,12 +4,13 @@ import {
   SUPPLY_IP_ADDRESSES_WITH_LOCATIONS,
   UPLOAD_BATCH_OF_VISITATION_STATS,
   DELETE_ALL_VISITATIONS_STATS,
+  DELETE_ALL_USERS_ANSWERS,
 } from 'consts/urls.consts';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { UserInfo } from 'src/models/user/user-info.model';
 import { getTestIps } from 'consts/test-ip-data';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
 import * as moment from 'moment';
 import { VisitationStats } from 'src/models/user/visitation-stats';
 import { BasicSnackbarService } from '../basic-snackbar/basic-snackbar.service';
@@ -103,7 +104,16 @@ export class VisitationStatsTestDataService {
   }
 
   deleteAllVisitaionsStats() {
-    this.http.delete(DELETE_ALL_VISITATIONS_STATS()).pipe();
+    this.http
+      .delete(DELETE_ALL_VISITATIONS_STATS())
+      .pipe(
+        catchError((error) => {
+          return of();
+        })
+      )
+      .subscribe((response) => {
+        this.snackBar.open('Visitations Stats deleted', MessageType.INFO);
+      });
   }
 
   private supplyWithPageName() {

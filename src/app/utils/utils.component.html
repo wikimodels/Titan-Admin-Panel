@@ -4,6 +4,7 @@
   style="width: 100%; margin-top: 30px"
   fxLayoutGap="30px"
 >
+  <!-- BUTTON 1 -->
   <button
     class="button-full-width"
     mat-raised-button
@@ -11,17 +12,39 @@
   >
     <span class="text-button">Upload Pristin Questionnaire</span>
   </button>
+
+  <!-- BUTTON 2 -->
   <button
     class="button-full-width"
     mat-raised-button
-    (click)="uploadVisitationStatsTestData()"
+    (click)="uploadVisitationsStatsTestData()"
   >
-    <span class="text-button">Upload Visitation Stats Test Data</span>
+    <span class="text-button">Upload Visitations Stats Test Data</span>
   </button>
-  <button class="button-full-width" mat-raised-button>
-    <span class="text-button">Delete Answers</span>
+
+  <!-- BUTTON 3 -->
+  <button
+    class="button-full-width"
+    mat-raised-button
+    (click)="uploadUsersAnswersTestData()"
+  >
+    <span class="text-button">Upload Users Answers Test Data</span>
   </button>
-  <button class="button-full-width" mat-raised-button>
-    <span class="text-button">Delete Visitation Stats</span>
+
+  <!-- BUTTON 4 -->
+  <button
+    class="button-full-width"
+    mat-raised-button
+    (click)="deleteUsersAnswers()"
+  >
+    <span class="text-button">Delete Users Answers</span>
+  </button>
+  <!-- BUTTON 5 -->
+  <button
+    class="button-full-width"
+    mat-raised-button
+    (click)="deleteVisitationStats()"
+  >
+    <span class="text-button">Delete Visitations Stats</span>
   </button>
 </div>

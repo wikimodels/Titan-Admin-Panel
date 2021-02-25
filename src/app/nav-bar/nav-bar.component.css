@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: gold;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 10px;
+}
+.admin-panel {
+  cursor: pointer;
+}

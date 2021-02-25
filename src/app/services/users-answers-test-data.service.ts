@@ -73,6 +73,19 @@ export class UserAnswersTestDataService {
       });
   }
 
+  deleteAllUsersAnsers() {
+    this.http
+      .delete(DELETE_ALL_USERS_ANSWERS())
+      .pipe(
+        catchError((error) => {
+          return of();
+        })
+      )
+      .subscribe((response) => {
+        this.snackBar.open('User Answers deleted', MessageType.INFO);
+      });
+  }
+
   private supplyQuestionnairWithAnswers() {
     let questionnaireAnswered = getPristinQuestionnaire();
     questionnaireAnswered.questions.forEach((q) => {
