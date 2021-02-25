@@ -9,6 +9,7 @@ import {
   TEXT_QUESTION,
   RATING_QUESTION,
   TEXT_ANSWER,
+  UTILS,
 } from 'consts/routes.consts';
 import { QuestionType } from 'src/models/questionnaire.model';
 import { PagesVisitationsComponent } from './pages-visitations/pages-visitations.component';
@@ -19,6 +20,7 @@ import { RespondentsComponent } from './respondents/respondents.component';
 import { SiteVisitationsComponent } from './site-visitations/site-visitations.component';
 import { TextAnswerComponent } from './text-answer/text-answer.component';
 import { TextQuestionComponent } from './text-question/text-question.component';
+import { UtilsComponent } from './utils/utils.component';
 
 const routes: Routes = [
   {
@@ -58,6 +60,10 @@ const routes: Routes = [
   {
     path: RATING_QUESTION + '/:question_id',
     component: RatingQuestionComponent,
+  },
+  {
+    path: UTILS,
+    component: UtilsComponent,
   },
 ];
 

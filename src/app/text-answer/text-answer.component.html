@@ -1,32 +1,28 @@
-<div class="screen">
-  <ng-container *ngIf="question">
-    <app-nav-bar [question]="question"></app-nav-bar>
-  </ng-container>
-
-  <div
-    fxLayout="column"
-    fxLayoutAlign="center center"
-    fxLayoutGap="20px"
-    fxLayoutGap.xs="5px"
-    class="text-container"
-  >
-    <app-text-answer-card
-      class="text-card mat-elevation-z4"
-      infiniteScroll
-      [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="250"
-      [scrollWindow]="true"
-      (scrolled)="onScroll()"
-      *ngFor="let answer of textAnswerQuestions; let i = index"
-      [textAnswerQuestion]="answer"
-      [questionId]="questionId"
-      [index]="collectionTotalCount - i - 1"
-    ></app-text-answer-card>
-    <ng-container *ngIf="collectionTotalCount > 50"
-      ><app-button-down
-        [elementHeight]="elementHeight"
-        [buttonClass]="buttonClass"
-      ></app-button-down
-    ></ng-container>
+<div
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="20px"
+  fxLayoutGap.xs="5px"
+>
+  <div *ngIf="question" class="header header-box">
+    Вопрос №{{ question.question_id }}: Ответы
   </div>
+  <app-text-answer-card
+    class="text-card mat-elevation-z4"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="250"
+    [scrollWindow]="true"
+    (scrolled)="onScroll()"
+    *ngFor="let answer of textAnswerQuestions; let i = index"
+    [textAnswerQuestion]="answer"
+    [questionId]="questionId"
+    [index]="collectionTotalCount - i - 1"
+  ></app-text-answer-card>
+  <ng-container *ngIf="collectionTotalCount > 50"
+    ><app-button-down
+      [elementHeight]="elementHeight"
+      [buttonClass]="buttonClass"
+    ></app-button-down
+  ></ng-container>
 </div>

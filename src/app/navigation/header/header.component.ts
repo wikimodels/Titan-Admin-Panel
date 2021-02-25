@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { HOME } from 'consts/routes.consts';
+
 import { QuestionnaireService } from 'src/app/services/questionnaire.service';
 
 @Component({
@@ -9,7 +12,7 @@ import { QuestionnaireService } from 'src/app/services/questionnaire.service';
 export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
 
-  constructor(private tqs: QuestionnaireService) {}
+  constructor(private tqs: QuestionnaireService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,5 +22,8 @@ export class HeaderComponent implements OnInit {
 
   uploadTQ() {
     this.tqs.uploadTestQuestionnaire();
+  }
+  goToHome() {
+    this.router.navigate([HOME]);
   }
 }

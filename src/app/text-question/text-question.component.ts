@@ -18,6 +18,7 @@ export class TextQuestionComponent implements OnInit, OnDestroy {
   form: FormGroup;
   question: Question;
   panelOpenState = false;
+  expanded = false;
   constructor(
     public questionnaireService: QuestionnaireService,
     private route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class TextQuestionComponent implements OnInit, OnDestroy {
     );
   }
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       this.questionnaire = this.questionsService.updateQuestion(
         this.form.value.question_text,
@@ -50,6 +52,9 @@ export class TextQuestionComponent implements OnInit, OnDestroy {
   }
   goToAnswers() {
     this.router.navigate([TEXT_ANSWER + '/' + this.question.question_id]);
+  }
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

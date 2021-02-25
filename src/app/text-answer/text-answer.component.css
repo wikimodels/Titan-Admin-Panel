@@ -3,22 +3,19 @@
   height: 100vh;
 }
 
+.header-box {
+  margin-bottom: 20px;
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 959px) {
   /* Styles */
 
-  .text-container {
-    width: 100vw;
-  }
   .text-card {
     width: 100vw;
   }
 }
 
 @media only screen and (min-device-width: 959px) and (max-device-width: 1279px) {
-  .text-container {
-    width: 100vw;
-  }
   .text-card {
     width: 95vw;
   }
@@ -26,27 +23,18 @@
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-width: 959px) {
-  .text-container {
-    width: 100vw;
-  }
   .text-card {
     width: 100vw;
   }
 }
 
 @media only screen and (min-device-width: 959px) and (max-device-width: 1279px) {
-  .text-container {
-    width: 100vw;
-  }
   .text-card {
     width: 95vw;
   }
 }
 
 @media only screen and (min-device-width: 1280px) and (max-device-width: 5000px) {
-  .text-container {
-    width: 90vw;
-  }
   .text-card {
     width: 90vw;
   }

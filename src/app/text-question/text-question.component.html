@@ -4,9 +4,11 @@
   style="width: 100%"
   fxLayoutGap="30px"
 >
+  <div class="header" *ngIf="question">Вопрос №{{ question.question_id }}</div>
   <mat-accordion>
     <form *ngIf="form" [formGroup]="form">
       <mat-expansion-panel
+        [(expanded)]="expanded"
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
       >
@@ -41,7 +43,7 @@
   <ng-container *ngIf="question">
     <app-open-graph [pageName]="question.page_name"></app-open-graph>
     <button class="button-full-width" mat-raised-button (click)="goToAnswers()">
-      <span style="margin-left: 10px"> Answers</span>
+      <span class="text-button"> Answers</span>
     </button>
   </ng-container>
 </div>

@@ -22,7 +22,7 @@ export class RespondentsComponent implements OnInit, OnDestroy {
   sub: Subscription;
   form: FormGroup;
   panelOpenState = false;
-
+  expanded = false;
   constructor(public questionnaireService: QuestionnaireService) {}
 
   ngOnInit(): void {
@@ -45,6 +45,7 @@ export class RespondentsComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       const { respondents_header, respondents_subheader } = this.form.value;
       this.questionnaire.respondents.respondents_header = respondents_header;
@@ -53,7 +54,9 @@ export class RespondentsComponent implements OnInit, OnDestroy {
       this.questionnaireService.uploadQuestionnaire(this.questionnaire);
     }
   }
-
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
+  }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

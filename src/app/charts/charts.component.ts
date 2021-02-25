@@ -26,6 +26,7 @@ export class ChartsComponent implements OnInit {
   myCharts: Chart[];
   form: FormGroup;
   color = 'blue';
+  expanded = false;
   constructor(
     public dialog: MatDialog,
     public questionnaireService: QuestionnaireService,
@@ -50,6 +51,7 @@ export class ChartsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       this.questionnaire = this.chartsService.updateCharts(
         this.pageName,
@@ -90,5 +92,9 @@ export class ChartsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((index) => {
       this.charts().removeAt(index);
     });
+  }
+
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
   }
 }

@@ -1,20 +1,19 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
-  IPIFY_IP,
-  GET_USER_INFO_BY_IP,
   SUPPLY_IP_ADDRESSES_WITH_LOCATIONS,
   UPLOAD_BATCH_OF_VISITATION_STATS,
+  DELETE_ALL_VISITATIONS_STATS,
 } from 'consts/urls.consts';
-import { catchError, map, tap, finalize, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { UserInfo } from 'src/models/user/user-info.model';
 import { getTestIps } from 'consts/test-ip-data';
-import { Questionnaire, QuestionType } from 'src/models/questionnaire.model';
-import { getPristionQuestionnaire } from 'consts/pristin-questionnaire';
 import { from } from 'rxjs';
 import * as moment from 'moment';
 import { VisitationStats } from 'src/models/user/visitation-stats';
+import { BasicSnackbarService } from '../basic-snackbar/basic-snackbar.service';
+import { MessageType } from '../basic-snackbar/models/message-type';
 
 const pageNames = [
   'Вопрос №1',
@@ -46,10 +45,13 @@ const endDate = new Date('2021-02-14');
 @Injectable({
   providedIn: 'root',
 })
-export class TestDataService {
-  constructor(private readonly http: HttpClient) {}
+export class VisitationStatsTestDataService {
+  constructor(
+    private readonly http: HttpClient,
+    private snackBar: BasicSnackbarService
+  ) {}
 
-  uploadVisitationStatsTestDate() {
+  uploadVisitationStatsTestData() {
     this.http
       .post<UserInfo[]>(SUPPLY_IP_ADDRESSES_WITH_LOCATIONS(), getTestIps())
       .pipe(
@@ -93,8 +95,15 @@ export class TestDataService {
         })
       )
       .subscribe((response) => {
-        console.log(response);
+        this.snackBar.open(
+          'Visitations Test Data is updated',
+          MessageType.INFO
+        );
       });
+  }
+
+  deleteAllVisitaionsStats() {
+    this.http.delete(DELETE_ALL_VISITATIONS_STATS()).pipe();
   }
 
   private supplyWithPageName() {
@@ -128,17 +137,6 @@ export class TestDataService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  private getRandomText() {
-    let text = '';
-    let numberOfWords = this.getRandomInt(5, 10);
-    for (let i = 0; i <= numberOfWords; i++) {
-      let numberOfChars = this.getRandomInt(5, 10);
-      let word = this.getRandomString(numberOfChars);
-      text = text + word + ' ';
-    }
-    return text.trim();
-  }
-
   private getRandomString(length) {
     var randomChars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -159,20 +157,5 @@ export class TestDataService {
     ];
     const index = this.getRandomInt(0, devices.length - 1);
     return devices[index];
-  }
-
-  private momentRandom(end = moment(), start) {
-    const endTime = +moment(end);
-    const randomNumber = (to, from = 0) =>
-      Math.floor(Math.random() * (to - from) + from);
-
-    if (start) {
-      const startTime = +moment(start);
-      if (startTime > endTime) {
-        throw new Error('End date is before start date!');
-      }
-      return moment(randomNumber(endTime, startTime));
-    }
-    return moment(randomNumber(endTime));
   }
 }

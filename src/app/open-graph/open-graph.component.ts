@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { OpenGraph, Questionnaire } from 'src/models/questionnaire.model';
@@ -10,14 +10,14 @@ import { QuestionnaireService } from '../services/questionnaire.service';
   templateUrl: './open-graph.component.html',
   styleUrls: ['./open-graph.component.css'],
 })
-export class OpenGraphComponent implements OnInit {
+export class OpenGraphComponent implements OnInit, OnDestroy {
   @Input() pageName: string;
   panelOpenState = false;
   sub: Subscription;
   questionnaire: Questionnaire;
   openGraph: OpenGraph;
   form: FormGroup;
-
+  expanded = false;
   constructor(
     public questionnaireService: QuestionnaireService,
     private openGraphService: OpenGraphService
@@ -39,6 +39,7 @@ export class OpenGraphComponent implements OnInit {
   }
 
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       this.questionnaire = this.openGraphService.updateOpenGraph(
         this.pageName,
@@ -47,5 +48,11 @@ export class OpenGraphComponent implements OnInit {
       );
       this.questionnaireService.uploadQuestionnaire(this.questionnaire);
     }
+  }
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

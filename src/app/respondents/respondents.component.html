@@ -3,10 +3,13 @@
   fxLayoutAlign="start center"
   style="width: 100%"
   fxLayoutGap="30px"
+  *ngIf="questionnaire"
 >
+  <div class="header">{{ questionnaire.respondents.respondents_header }}</div>
   <mat-accordion>
     <form *ngIf="form" [formGroup]="form">
       <mat-expansion-panel
+        [(expanded)]="expanded"
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
       >

@@ -1,13 +1,17 @@
 <div style="margin-bottom: 0px">
   <mat-toolbar color="warn">
-    <div fxLayout="row" fxLayoutAlign="space-between" style="width: 100%">
-      <div>Titan Admin Panel</div>
-      <button mat-icon-button (click)="onToggleSidenav()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <button mat-icon-button (click)="uploadTQ()">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      style="width: 100%"
+    >
+      <div class="admin-panel" (click)="goToHome()">Titan Admin Panel</div>
+
+      <mat-icon (click)="onToggleSidenav()" class="admin-panel">menu</mat-icon>
+
+      <!-- <button mat-icon-button (click)="uploadTQ()">
         <mat-icon>delete</mat-icon>
-      </button>
+      </button> -->
     </div>
   </mat-toolbar>
 </div>

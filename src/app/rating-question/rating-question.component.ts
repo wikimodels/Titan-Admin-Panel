@@ -17,6 +17,7 @@ export class RatingQuestionComponent implements OnInit, OnDestroy {
   form: FormGroup;
   question: Question;
   panelOpenState = false;
+  expanded = false;
   constructor(
     public questionnaireService: QuestionnaireService,
     private route: ActivatedRoute,
@@ -37,6 +38,7 @@ export class RatingQuestionComponent implements OnInit, OnDestroy {
     );
   }
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       this.questionnaire = this.questionsService.updateQuestion(
         this.form.value.question_text,
@@ -45,6 +47,9 @@ export class RatingQuestionComponent implements OnInit, OnDestroy {
       );
       this.questionnaireService.uploadQuestionnaire(this.questionnaire);
     }
+  }
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

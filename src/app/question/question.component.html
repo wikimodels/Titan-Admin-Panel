@@ -4,9 +4,11 @@
   style="width: 100%"
   fxLayoutGap="30px"
 >
+  <div *ngIf="question" class="header">Вопрос №{{ question.question_id }}</div>
   <mat-accordion>
     <form *ngIf="form" [formGroup]="form">
       <mat-expansion-panel
+        [(expanded)]="expanded"
         (opened)="panelOpenState = true"
         (closed)="panelOpenState = false"
       >

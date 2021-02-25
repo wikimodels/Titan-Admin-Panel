@@ -11,10 +11,10 @@ import {
   UPLOAD_TEST_QUESTIONNAIRE,
 } from 'consts/urls.consts';
 
-import { getPristionQuestionnaire } from 'consts/pristin-questionnaire';
+import { getPristinQuestionnaire } from 'consts/pristin-questionnaire';
 import { SlackService } from './shared/slack.service';
 import { DelayedRetriesService } from './shared/delayed-retries.service';
-import { BasicSnackbarModule } from '../basic-snackbar/basic-snackbar.module';
+
 import { BasicSnackbarService } from '../basic-snackbar/basic-snackbar.service';
 import { MessageType } from '../basic-snackbar/models/message-type';
 
@@ -74,7 +74,7 @@ export class QuestionnaireService {
   }
 
   uploadTestQuestionnaire() {
-    const q = getPristionQuestionnaire();
+    const q = getPristinQuestionnaire();
     this.http
       .post(UPLOAD_TEST_QUESTIONNAIRE(), q)
       .pipe(catchError((error) => this.slackService.errorHandling(error)))

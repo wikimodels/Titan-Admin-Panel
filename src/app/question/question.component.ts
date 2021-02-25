@@ -26,7 +26,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private questionsService: QuestionsService
   ) {}
-
+  expanded = false;
   ngOnInit(): void {
     this.sub = this.questionnaireService.questionnaire$.subscribe(
       (questionnaire: Questionnaire) => {
@@ -41,6 +41,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
     );
   }
   onSubmit() {
+    this.togglePanel();
     if (this.form.status === 'VALID') {
       this.questionnaire = this.questionsService.updateQuestion(
         this.form.value.question_text,
@@ -50,6 +51,11 @@ export class QuestionComponent implements OnInit, OnDestroy {
       this.questionnaireService.uploadQuestionnaire(this.questionnaire);
     }
   }
+
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

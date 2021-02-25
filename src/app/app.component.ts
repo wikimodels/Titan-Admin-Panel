@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-import { TestDataService } from './services/test-data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,7 @@ import { TestDataService } from './services/test-data.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private testDateService: TestDataService,
-    private title: Title,
-    private meta: Meta
-  ) {}
+  constructor(private title: Title, private meta: Meta) {}
   ngOnInit() {
     this.title.setTitle('Titan Admin Panel');
     this.meta.addTags([
@@ -27,8 +22,5 @@ export class AppComponent implements OnInit {
       },
       { name: 'og:url', content: '' },
     ]);
-  }
-  generateTestData() {
-    this.testDateService.uploadVisitationStatsTestDate();
   }
 }

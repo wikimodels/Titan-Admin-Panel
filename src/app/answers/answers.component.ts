@@ -20,7 +20,7 @@ export class AnswersComponent implements OnInit, OnDestroy {
   sub: Subscription;
   myAnswers: Answer[];
   form: FormGroup;
-
+  expanded = false;
   constructor(
     public questionnaireService: QuestionnaireService,
     private answersService: AnswersService,
@@ -49,6 +49,7 @@ export class AnswersComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.togglePanel();
     const answers = this.form.getRawValue().answers;
     if (this.form.status === 'VALID') {
       this.questionnaire = this.answersService.updateAnswers(
@@ -94,7 +95,9 @@ export class AnswersComponent implements OnInit, OnDestroy {
       this.answers().removeAt(index);
     });
   }
-
+  private togglePanel() {
+    this.expanded = this.expanded == true ? false : true;
+  }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

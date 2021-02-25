@@ -15,7 +15,7 @@ import {
   UPLOAD_TEST_QUESTIONNAIRE,
 } from 'consts/urls.consts';
 
-import { getPristionQuestionnaire } from 'consts/pristin-questionnaire';
+import { getPristinQuestionnaire } from 'consts/pristin-questionnaire';
 import { SlackService } from './shared/slack.service';
 import { DelayedRetriesService } from './shared/delayed-retries.service';
 import { FormControl, Validators } from '@angular/forms';
